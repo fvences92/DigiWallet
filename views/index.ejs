@@ -6,22 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account List</title>
+    <%- include ('./partials/head.ejs') %>
 </head>
 
 <body>
     <h1>My Investment Account List</h1>
     <ul>
-        <% accounts.forEach(account=> { %>
+        <% accounts.forEach(Account=> { %>
             <li>
-                <a href="/portfolio/<%= account._id %>">
-                    <%= account.title; %>
+                <a href="/portfolio/<%= account.investment %>">
+                    <%= Account.institution; %>
                 </a>
 
-                <form action="/books/<%= account.id %>?_method=DELETE" method="POST" style="display:inline; margin-left:16px;">
+                <form action="/portfolio/<%= account.investment %>?_method=DELETE" method="POST" style="display:inline; margin-left:16px;">
                     <input type="submit" value="DELETE" />
                 </form>
 
-                <a href="/portfolio/<%=account._id %>/edit">Edit</a>
+                <a href="/portfolio/<%=account.investment %>/edit">Edit</a>
                 
             </li>
             <% }); %>

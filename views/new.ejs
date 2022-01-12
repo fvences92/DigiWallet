@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Investment Account</title>
+    <%- include ('./partials/head.ejs') %>
 </head>
 <body>
     <h1>Add New Investment Account</h1>
-    <form action="/books" method="post">
+    <form action="/portfolio" method="post">
         Title: <input type="text" name="title"><br>
         Institution: <input type="text" name="Institution"><br>
         <input type="submit" value="Add Account">

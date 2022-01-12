@@ -6,14 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Account List</title>
+    <%- include ('./partials/head.ejs') %>
 </head>
 
 <body>
     <h1>Edit Account</h1>
-    <form action="/books/<%=book._id%>?_method=PUT" method="POST">
+    <form action="/portfolio/<%=account.investment%>?_method=PUT" method="POST">
         <!--  NOTE: the form is pre-populated with values for the server-->
-        Title: <input type="text" name="title" value="<%=account.title%>" /><br />
-        Author: <input type="text" name="author" value="<%=account.author%>" /><br />
+        Investment: <input type="text" name="title" value="<%=account.investment%>" /><br />
+        Institution: <input type="text" name="author" value="<%=account.institution%>" /><br />
             <br />
             <input type="submit" value="Submit Changes" />
     </form>

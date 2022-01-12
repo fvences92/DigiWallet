@@ -1,6 +1,6 @@
 const express = require('express');
 const accountsRouter = express.Router();
-const Account = require('../models/accounts');
+const Account = require('../models/account');
 const acctSeed = require('../models/acctSeed.js');
 
 
@@ -85,4 +85,4 @@ accountsRouter.get('/:id', (req, res) => {
     });
 });
 
-module.exports = accountRouter;
+module.exports = accountsRouter;
