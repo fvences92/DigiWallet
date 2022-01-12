@@ -9,7 +9,9 @@
 </head>
 <body>
     <h1>See Account Details</h1>
+    <%console.log('---', account)%>
     <h3><%= account.investment %></h3>
+    
     <h3><%= account.amount %></h3>
     <p>Held by: <%= account.institution %></p>
     <a href="/portfolio">Back to Account List</a>

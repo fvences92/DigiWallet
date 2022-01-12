@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const acctController = require('./controllers/accounts');
 
+
 const app = express();
 
 require('dotenv').config();
@@ -27,10 +28,6 @@ db
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
-//ROUTES
-app.get('/', (req, res) => {
-    res.redirect('/portfolio')
-});
 
 app.use('/portfolio', acctController);
 
@@ -44,3 +41,4 @@ app.get('/*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Express is listening on port:${PORT}`);
 });
+

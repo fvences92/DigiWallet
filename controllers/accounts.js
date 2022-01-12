@@ -7,11 +7,12 @@ const acctSeed = require('../models/acctSeed.js');
 // Seed
 
 
-accountsRouter.get('/seed', (req, res) => {
+accountsRouter.get('/seed', async (req, res) => {
     // to remove any repeat instances of seed data
-    Account.deleteMany({}, (error, allAccounts) => { });
+    await Account.deleteMany({});
 
-    Account.create(acctSeed, (error, data) => {
+    console.log('seed==', acctSeed[0])
+    await Account.create(acctSeed, (error, data) => {
         res.redirect('/portfolio');
     });
 });
@@ -47,7 +48,7 @@ accountsRouter.put("/:id", (req, res) => {
         req.body.completed = false
     }
     // res.send(req.body)
-    Book.findByIdAndUpdate(
+    Account.findByIdAndUpdate(
         req.params.id,
         req.body,
         {
@@ -61,28 +62,32 @@ accountsRouter.put("/:id", (req, res) => {
 
 //CREATE
 accountsRouter.post('/', (req, res) => {
-    req.body.completed = !!req.body.completed;
+    req.body.id = !!req.body.id;
     Account.create(req.body, (err, account) => {
         res.redirect('/portfolio');
     });
 });
 
 //EDIT
-accountsRouter.get("/:id/edit", (req, res) => {
-    Account.findById(req.params.id, (error, foundAccount) => {
-        res.render("edit.ejs", {
-            account: foundAccount,
-        })
-    })
-})
+accountsRouter.get("/:id/edit", async (req, res) => {
+   const account = await Account.findOne({investment: req.params.id})
+   console.log('account===', account); 
+   res.render('edit', { 
+       account
+    });
+});
 
 // SHOW
-accountsRouter.get('/:id', (req, res) => {
-    Account.findById(req.params.id, (err, foundBook) => {
-        res.render('show.ejs', {
-            account: foundAccount,
-        });
-    });
+accountsRouter.get('/:investment', async (req, res) => {
+    // Account.findById(req.params.id, (err, foundAccount) => {
+    //     res.render('show', {
+    //         account: foundAccount,
+    //     });
+    // });
+    const account = await Account.findOne({investment: req.params.investment});
+    res.render('show', {
+        account
+    })
 });
 
 module.exports = accountsRouter;

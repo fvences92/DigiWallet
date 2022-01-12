@@ -10,24 +10,36 @@
 </head>
 
 <body>
-    <h1>My Investment Account List</h1>
-    <ul>
-        <% accounts.forEach(Account=> { %>
+    <div class='title'>
+    <h1 style="text-align: center; margin-top: 20%;">DigiWallet</h1>
+    <p style="text-align: center; margin-top: 20%;">To the Moon:</p>
+    <ul style="text-align: center;">
+        <% accounts.forEach(account=> { %>
             <li>
-                <a href="/portfolio/<%= account.investment %>">
-                    <%= Account.institution; %>
+                <a href="<%= 'portfolio/'+account.investment %>">
+                    <%= account.institution; %>
+                    <%= account.amount; %>
+
                 </a>
-
+                <div class="form">
                 <form action="/portfolio/<%= account.investment %>?_method=DELETE" method="POST" style="display:inline; margin-left:16px;">
-                    <input type="submit" value="DELETE" />
+                    <input type="submit" value="DELETE" class="btn btn-primary" />
                 </form>
-
-                <a href="/portfolio/<%=account.investment %>/edit">Edit</a>
+                <p>You have:</p>
+                <p id="counter"></p>
+                <table>
+                    <tr class="acctlist">
+                            <th><h3>Account:</h3></th>
+                    </tr>
+                    <tbody id = "cuentas"></tbody>
+                </table>
+                <div id ="edit box" role= "aria-hidden"></div>
+                <a href="/portfolio/<%=account.investment %>/edit" style='text-align: center;';>Edit</a>
                 
             </li>
             <% }); %>
     </ul>
-    <a href="/portfolio/new">Add New Investment Account</a>
+    <a href="/portfolio/new">New Investment</a>
 </body>
 
 </html>
