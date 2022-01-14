@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account List</title>
+    <title>DigiWallet</title>
     <link rel='stylesheet' type='text/css' href='/public/style.css'>
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 </head>
@@ -18,9 +17,7 @@
                 <input type='submit' value="Track a new Investment">
             </form>
         </div>
-        
         <% accounts.forEach(account=> { %>
-                
             
             <div class='flexbox-item'>
                     
@@ -36,8 +33,6 @@
                           
                         <a href="/portfolio/<%=account._investment %>/edit">Edit</a>
                     </div>
-                    
-                    <% }); %>
                 </body>
-                
+             <% }); %>
 </html>

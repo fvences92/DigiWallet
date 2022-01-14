@@ -83,31 +83,34 @@ nav a:before {
     --purple: #B67D9A;
   }
   
-  
+  /* GENERAL */
+
   /* CONTAINERS */
   .container1 {
-    width: 80vw;
-    height: 70vw;
-    margin: 50px auto;
-    display: flex;
-    border-radius: 10px;
-    box-shadow: 1px 1px 10px #ddd,
-                -1px -1px 10px #ddd,
-                1px -1px 10px #ddd,
-                -1px 1px 10px #ddd;
-  }
+      text-align: center;
+        width: 80vw;
+        height: 70vw;
+        margin: 55px auto;
+        display: flex;
+        border: 10px solid;
+        color: orange;
+      }
   .sidebar {
     width: 50%;
-    background: url('assets/images/acnh.png');
+    background: url('https://www.moneycrashers.com/wp-content/uploads/2019/06/digital-wallet-phone-credit-card-id-information.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 10px 0 0 10px;
+    background-position-x: -310px;
+    background-position-y: -5px;
+
+
   }
+
   .registration {
     width: 50%;
-    background: #f9f9f9;
+    background: #000000;
     border-radius: 0 10px 10px 0;
-    padding: 15px;
+    padding: 20px;
     box-sizing: border-box;
     overflow: auto;
   }

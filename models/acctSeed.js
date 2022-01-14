@@ -32,7 +32,15 @@ module.exports = [{
 {
     investment: "Cardano",
     institution: 'Kraken',
-    amount: '10,000 ADA'
+    amount: '10,000 ADA',
 },
-]
-;
+{
+    investment: 'Dogecoin',
+    institution: 'Paypal',
+    amount: '100,000 Doge',
+},
+{
+    investment: 'Polkadot',
+    institution: 'Webull',
+    amount: '500 DOT', 
+}];

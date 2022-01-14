@@ -1,4 +1,5 @@
 const express = require('express');
+const account = require('../models/account');
 const accountsRouter = express.Router();
 const Account = require('../models/account');
 const acctSeed = require('../models/acctSeed.js');
@@ -13,56 +14,59 @@ accountsRouter.get('/seed', async (req, res) => {
 
     console.log('seed==', acctSeed[0])
     await Account.create(acctSeed, (error, data) => {
-        res.redirect('/portfolio');
+        res.redirect('/portfolio', {
+            account
+        });
     });
 });
 
-//INDEX
-
+//START ROUTE
 
 accountsRouter.get('/', (req, res) => {
     Account.find({}, (err, accounts) => {
-        res.render('index', { accounts }); //
+        res.render('login') //
     });
 });
 
-accountsRouter.get ('/login', (req, res) => {
-    res.render('login.ejs');
-});
 
-//NEW
+accountsRouter.get('/returning', (req, res) => {
+    res.render('returning')
+    
+    //NEW
+    accountsRouter.get('/portfolio', async (req, res) => {
+        const account = await res.render('index'); {
+            account
+        }
+    });
+});
 accountsRouter.get('/new', (req, res) => {
     res.render('new');
 });
 
-// DELETE
 
-accountsRouter.delete("/portfolio/:id", (req, res) => {
-    Account.findByIdAndRemove(req.params.id, (err, data) => {
-      res.redirect("/portfolio")
-    });
-});
+//DELETE
+accountsRouter.delete("/:investment", async (req, res) => {
+   const account= await Account.findByIdAndRemove({investment: req.params._investment});
+      res.redirect("/portfolio", {
+          account
+      })
+    })
+
 //UPDATE
-
-accountsRouter.put("/portfolio/:id", (req, res) => {
-    if (req.body.com === "on") {
-        req.body.completed = true
-    } else {
-        req.body.completed = false
-    }
+accountsRouter.post("/:investment", (req, res) => {
     // res.send(req.body)
     Account.findByIdAndUpdate(
-        req.params.id,
+        req.params.investment,
         req.body,
         {
             new: true,
         },
-        (error, ccount)=>{
-            res.redirect(`/portfolio/${req.params.id}`)
+        (error, updatedAccount)=>{
+            res.redirect(`/portfolio/${req.params.investment}`)
         }
-        )
-    })
-    
+    )
+})
+
 //CREATE
 accountsRouter.post('/', (req, res) => {
     req.body.id = !!req.body.id;
@@ -73,7 +77,6 @@ accountsRouter.post('/', (req, res) => {
 
 
 
-    
 //EDIT
 accountsRouter.get("/:id/edit", async (req, res) => {
    const account = await Account.findOne({investment: req.params.id})
