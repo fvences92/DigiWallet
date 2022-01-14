@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const acctController = require('./controllers/accounts');
+const path = require('path')
 
 
 const app = express();
@@ -11,6 +12,7 @@ const app = express();
 require('dotenv').config();
 
 app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
 
 const { PORT = 3000, DATABASE_URL } = process.env;
 
@@ -30,6 +32,10 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/portfolio', acctController);
+
+app.get ('/', (req, res) => {
+    res.redirect('/portfolio')
+});
 
 // catch all route - typically used for handling our 404 page
 app.get('/*', (req, res) => {

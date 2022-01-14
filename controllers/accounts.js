@@ -18,10 +18,16 @@ accountsRouter.get('/seed', async (req, res) => {
 });
 
 //INDEX
+
+
 accountsRouter.get('/', (req, res) => {
     Account.find({}, (err, accounts) => {
         res.render('index', { accounts }); //
     });
+});
+
+accountsRouter.get ('/login', (req, res) => {
+    res.render('login.ejs');
 });
 
 //NEW
@@ -29,20 +35,17 @@ accountsRouter.get('/new', (req, res) => {
     res.render('new');
 });
 
-//DELETE
-accountsRouter.delete("/:id", (req, res) => {
+// DELETE
 
-    // original test to see if route was working
-    //  res.send("deleting...")
-    Account.findByIdAndDelete(req.params.id, (err, data) => {
-        res.redirect("/portfolio")
-    })
-
-})
-
+accountsRouter.delete("/portfolio/:id", (req, res) => {
+    Account.findByIdAndRemove(req.params.id, (err, data) => {
+      res.redirect("/portfolio")
+    });
+});
 //UPDATE
-accountsRouter.put("/:id", (req, res) => {
-    if (req.body.completed === "on") {
+
+accountsRouter.put("/portfolio/:id", (req, res) => {
+    if (req.body.com === "on") {
         req.body.completed = true
     } else {
         req.body.completed = false
@@ -54,12 +57,12 @@ accountsRouter.put("/:id", (req, res) => {
         {
             new: true,
         },
-        (error, updatedAccount)=>{
+        (error, ccount)=>{
             res.redirect(`/portfolio/${req.params.id}`)
         }
-    )
-})
-
+        )
+    })
+    
 //CREATE
 accountsRouter.post('/', (req, res) => {
     req.body.id = !!req.body.id;
@@ -68,6 +71,9 @@ accountsRouter.post('/', (req, res) => {
     });
 });
 
+
+
+    
 //EDIT
 accountsRouter.get("/:id/edit", async (req, res) => {
    const account = await Account.findOne({investment: req.params.id})

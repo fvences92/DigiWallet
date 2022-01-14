@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Investment Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <title>New Investment Account</title>
     <%- include ('./partials/head.ejs') %>
 </head>
 <body>
-    <h1>Add New Investment Account</h1>
+    <div class='flexbox-item'>
+    <h3>Add New Investment Account</h3>
     <form action="/portfolio" method="post">
         Investment: <input type="text" name="title"><br>
         Institution: <input type="text" name="Institution"><br>
-        <input type="submit" value="Add Account">
-        <a href="/portfolio">Go Back Home</a>
+        Amount Invested: <input type='text' name='amount'><br>
+        <input type="submit" value="Add Account"><br>
+        <a href="/portfolio"> Go Back Home</a>
     </form>
+</div>
 </body>
 </html>

@@ -6,40 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account List</title>
-    <%- include ('./partials/head.ejs') %>
+    <link rel='stylesheet' type='text/css' href='/public/style.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 </head>
+<%- include ('./partials/head.ejs') %>
 
-<body>
-    <div class='title'>
-    <h1 style="text-align: center; margin-top: 20%;">DigiWallet</h1>
-    <p style="text-align: center; margin-top: 20%;">To the Moon:</p>
-    <ul style="text-align: center;">
+    <body>
+
+        <div class="newButton">
+            <form action="/portfolio/new">
+                <input type='submit' value="Track a new Investment">
+            </form>
+        </div>
+        
         <% accounts.forEach(account=> { %>
-            <li>
-                <a href="<%= 'portfolio/'+account.investment %>">
-                    <%= account.institution; %>
-                    <%= account.amount; %>
-
-                </a>
-                <div class="form">
-                <form action="/portfolio/<%= account.investment %>?_method=DELETE" method="POST" style="display:inline; margin-left:16px;">
-                    <input type="submit" value="DELETE" class="btn btn-primary" />
-                </form>
-                <p>You have:</p>
-                <p id="counter"></p>
-                <table>
-                    <tr class="acctlist">
-                            <th><h3>Account:</h3></th>
-                    </tr>
-                    <tbody id = "cuentas"></tbody>
-                </table>
-                <div id ="edit box" role= "aria-hidden"></div>
-                <a href="/portfolio/<%=account.investment %>/edit" style='text-align: center;';>Edit</a>
                 
-            </li>
-            <% }); %>
-    </ul>
-    <a href="/portfolio/new">New Investment</a>
-</body>
-
+            
+            <div class='flexbox-item'>
+                    
+                    <a href="<%= 'portfolio/'+account.investment %>">
+                        <p>Cick to view Position </p>
+                    </a>
+                        <p>Institution: <%= account.institution; %>
+                        <p>Investment: <%=account.investment; %></p>
+                        <a href="/portfolio/<%= account._investment %>"></a>
+                         <form action="/portfolio/<%= account.investment %>?_method=DELETE" method="POST">
+                            <input type="submit" value="DELETE" />
+                          </form>
+                          
+                        <a href="/portfolio/<%=account._investment %>/edit">Edit</a>
+                    </div>
+                    
+                    <% }); %>
+                </body>
+                
 </html>
