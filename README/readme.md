@@ -24,7 +24,9 @@ Version 1.0
 ![edit](/edit.png)
 
 
-
+ ## Getting Started
+ [click here](https://digiwallet22.herokuapp.com/) to deploy the application!
+ 
  ## Future Enhancements
  * Using authentication and user session
  * Styling improvement
