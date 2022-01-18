@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const acctSchema = new Schema({
     investment: { type: String, required: true },
     institution: { type: String, required: true },
-    amount: { type: String, required: true }
+    amount: { type: String, required: true },
+    completed: { type: Boolean, default: false }
 }, { timestamps: true });
 
 

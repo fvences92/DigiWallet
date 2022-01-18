@@ -3,21 +3,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
-const acctController = require('./controllers/accounts');
-const path = require('path')
-const session = require('express-session');
-const bcrypt = require('bcrypt');
-const hashedString = bcrypt.hashSync('yourStringHere', bcrypt.genSaltSync(10));
+const acctController = require('./controllers/account');
+const path = require('path');
+
+
 
 const app = express();
 
 require('dotenv').config();
 
-bcrypt.compareSync('yourGuessHere', hashedString);
-
-
 app.set('view engine', 'ejs');
+
 app.use(express.static(path.join(__dirname, 'public')));
+
 const { PORT = 3000, DATABASE_URL } = process.env;
 
 // DATABASE CONNECTION
@@ -34,24 +32,20 @@ db
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
-app.use('/login', acctController);
-app.use(
-    session({
-        secret: process.env.SECRET,
-        resave: false,
-        saveUninitialized: false
-    })
-);
-
+//ROUTES
 app.get('/', (req, res) => {
-    res.redirect ('/login')
+    res.redirect('/portfolio')
 });
+
+app.use('/portfolio', acctController);
+
 // catch all route - typically used for handling our 404 page
 app.get('/*', (req, res) => {
     res.render('404');
 });
 
+
+
 app.listen(PORT, () => {
     console.log(`Express is listening on port:${PORT}`);
 });
-

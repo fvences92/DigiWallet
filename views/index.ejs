@@ -1,5 +1,6 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,25 +15,26 @@
 
         <div class="newButton">
             <form action="/portfolio/new">
-                <input type='submit' value="Track a new Investment">
+                <input type='submit' value="Track a new Investment" style='background-color: orange; color: black;'>
             </form>
         </div>
+
         <% accounts.forEach(account=> { %>
-            
             <div class='flexbox-item'>
-                    
-                    <a href="<%= 'portfolio/'+account.investment %>">
-                        <p>Cick to view Position </p>
-                    </a>
-                        <p>Institution: <%= account.institution; %>
-                        <p>Investment: <%=account.investment; %></p>
-                        <a href="/portfolio/<%= account._investment %>"></a>
-                         <form action="/portfolio/<%= account.investment %>?_method=DELETE" method="POST">
-                            <input type="submit" value="DELETE" />
-                          </form>
-                          
-                        <a href="/portfolio/<%=account._investment %>/edit">Edit</a>
-                    </div>
-                </body>
-             <% }); %>
+                <a href="<%=/portfolio/+account._id%>">
+                    <p>Cick to view Position </p>
+                </a>
+                <p>Institution: <%= account.institution; %>
+                        <p>Investment: <%=account.investment; %>
+                        </p>
+                        <form action="/portfolio/<%= account.id %>?_method=DELETE" method="POST">
+                            <input type="submit" value="DELETE"
+                                style='background-color: orange; color: rgb(134, 15, 15);' />
+                        </form>
+                        <a href="/portfolio/<%=account.investment %>/edit">Edit</a>
+                        </form>
+            </div>
+            <% }); %>
+    </body>
+
 </html>

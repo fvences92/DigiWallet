@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,19 +11,19 @@
 </head>
 
 <body>
-    <div class='flexbox-item'>
+    <div class='flexbox-item1'>
     <h1>Edit Account</h1>
-
-    <form action="/portfolio/<%=account.investment%>?_method=PUT" method="POST">
+    <form action="/portfolio/<%=account._id%>?_method=PUT" method="POST">
         <!--  NOTE: the form is pre-populated with values for the server-->
         Investment: <input type="text" name="investment" value="<%=account.investment%>" /><br />
         Institution: <input type="text" name="institution" value="<%=account.institution%>" /><br />
-        Amount Invested: <input type="text" name="amount" value="<%=account.amount%>" /><br />
+        Amount: <input type="text" name="Investment Amount" value="<%=account.amount%>" /><br />
+        Completed: <input type="checkbox" name="complete" <% if(account.completed===true){ %> checked <% } %> />
             <br />
-            <input type="submit" value="Submit Changes" /><br>
-            <a href="/portfolio">Go Back Home</a>
+            <input type="submit" value="Submit Changes" style='background-color: orange;'/><br>
+            <a href="/portfolio">Go Back</a>
     </form>
-    </div>
+</div>
 </body>
 
 </html>

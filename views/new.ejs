@@ -9,12 +9,13 @@
     <%- include ('./partials/head.ejs') %>
 </head>
 <body>
-    <div class='flexbox-item'>
+    <div class='flexbox-item1'>
     <h3>Add New Investment Account</h3>
     <form action="/portfolio" method="POST">
         Investment: <input type="text" name="title"><br>
         Institution: <input type="text" name="Institution"><br>
         Amount Invested: <input type='text' name='amount'><br>
+        Completed: <input type="checkbox" name="completed"><br>
         <input style='background-color:orange;' type="submit" value="Add Account"><br>
         <a href="/portfolio"> Go Back Home</a>
     </form>

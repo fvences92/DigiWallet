@@ -19,6 +19,20 @@ body {
     
 }
 
+.flexbox-item1 {
+    width: 200px;
+    margin: 15px;
+    border: 5px solid;
+    background-color: #cacaca;
+    color: black;
+    font-size: 16px;
+    text-align: center;
+    padding-top: 10px;
+    font-family: 'Staatliches', cursive;
+    display: grid;
+    margin-left: 40%;
+   
+}
 .headers {
     list-style: none;
     display: inline-block;
@@ -102,6 +116,7 @@ nav a:before {
     background-repeat: no-repeat;
     background-position-x: -310px;
     background-position-y: -5px;
+
 
 
   }
