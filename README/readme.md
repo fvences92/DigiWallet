@@ -18,10 +18,10 @@ Version 1.0
 
 
 ## Screenshots 
-![index](/index.png)
-![show](/show.png)
+![index](/Index.png)
 ![new](/new.png)
 ![edit](/edit.png)
+![show](/show.png)
 
 
  ## Getting Started
